@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Moon Festival Celebration - Kids Party Invitation 🎉</title>
+    
+    <!-- Cherry Bomb One Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+    
+    <!-- Parallax Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: #1a1a2e;
+        }
+
+        .scene {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Background layer */
+        .background-layer {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.7);
+        }
+
+        /* Animal layers */
+        .animal-layer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .animal1 {
+            position: absolute;
+            left: 10%;
+            top: 60%;
+            width: 120px;
+            height: auto;
+        }
+
+        .animal2 {
+            position: absolute;
+            right: 15%;
+            top: 70%;
+            width: 100px;
+            height: auto;
+        }
+
+        .animal3 {
+            position: absolute;
+            left: 60%;
+            top: 75%;
+            width: 90px;
+            height: auto;
+        }
+
+        /* Static content overlay */
+        .static-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none; /* Allow mouse events to pass through to parallax */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Content layer */
+        .content-layer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            pointer-events: auto; /* Re-enable mouse events for interactive elements */
+        }
+
+        .main-title {
+            font-family: 'Cherry Bomb One', cursive;
+            font-size: 4rem;
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 10px #ffd700;
+            }
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 20px #ffd700, 0 0 30px #ffd700;
+            }
+        }
+
+        .subtitle {
+            font-family: 'Cherry Bomb One', cursive;
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .invitation-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            border: 3px solid #ffd700;
+        }
+
+        .invitation-text {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-details {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .event-date {
+            font-family: 'Cherry Bomb One', cursive;
+            font-size: 2rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 1rem;
+            /* THIS IS THE DATE - EASY TO CHANGE */
+        }
+
+        .event-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .event-info div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .activities {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .activities h3 {
+            font-family: 'Cherry Bomb One', cursive;
+            color: #7b2cbf;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .activity-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .activity-list li {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .rsvp-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .rsvp-button {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Logo positioning */
+        .logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: auto;
+            z-index: 100;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 1;
+        }
+
+        /* Moon and stars decoration */
+        .decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ffd700;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .event-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .animal1, .animal2, .animal3 {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Scene (Background Only) -->
+    <div id="scene" class="scene">
+        
+        <!-- Background Layer -->
+        <div class="layer background-layer" data-depth="0.2"></div>
+        
+        <!-- Animal Layers -->
+        <div class="layer animal-layer" data-depth="0.5">
+            <img src="animal1.png" alt="Cute Animal 1" class="animal1">
+        </div>
+        
+        <div class="layer animal-layer" data-depth="0.7">
+            <img src="animal2.png" alt="Cute Animal 2" class="animal2">
+        </div>
+        
+        <div class="layer animal-layer" data-depth="0.8">
+            <img src="animal3.png" alt="Cute Animal 3" class="animal3">
+        </div>
+        
+        <!-- Decorations Layer -->
+        <div class="layer decorations" data-depth="0.6">
+            <div class="moon"></div>
+            <div class="stars">
+                <div class="star" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
+                <div class="star" style="top: 25%; left: 80%; animation-delay: 0.5s;"></div>
+                <div class="star" style="top: 40%; left: 15%; animation-delay: 1s;"></div>
+                <div class="star" style="top: 30%; left: 60%; animation-delay: 1.5s;"></div>
+                <div class="star" style="top: 20%; left: 45%; animation-delay: 0.8s;"></div>
+                <div class="star" style="top: 50%; left: 75%; animation-delay: 0.3s;"></div>
+                <div class="star" style="top: 60%; left: 25%; animation-delay: 1.2s;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Static Content (Outside Parallax) -->
+    <div class="static-content">
+        <div class="content-layer">
+            <h1 class="main-title">🌙 Moon Festival 🌙</h1>
+            <h2 class="subtitle">Magic Night Party!</h2>
+            
+            <div class="invitation-card">
+                <p class="invitation-text">
+                    🌟 You're invited to the most magical night of the year! 🌟<br>
+                    Join us for an enchanted Moon Festival celebration where we'll dance under the stars, 
+                    enjoy delicious treats, and create memories that will last forever!
+                </p>
+                
+                <div class="event-details">
+                    <div class="event-date">
+                        Saturday, October 14th, 2025
+                    </div>
+                    <div class="event-info">
+                        <div>
+                            <strong>🕕 Time</strong><br>
+                            6:00 PM - 9:00 PM
+                        </div>
+                        <div>
+                            <strong>📍 Location</strong><br>
+                            Magic Garden Park
+                        </div>
+                        <div>
+                            <strong>👕 Dress Code</strong><br>
+                            Pajamas & Cozy Clothes
+                        </div>
+                        <div>
+                            <strong>🎒 Bring</strong><br>
+                            Blanket & Pillow
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activities">
+                    <h3>🎪 Fun Activities 🎪</h3>
+                    <ul class="activity-list">
+                        <li>🥮 Moon Cake Making</li>
+                        <li>🏮 Lantern Decorating</li>
+                        <li>🎵 Sing Along Songs</li>
+                        <li>📚 Story Time</li>
+                        <li>🎨 Face Painting</li>
+                        <li>⭐ Star Gazing</li>
+                    </ul>
+                </div>
+                
+                <div class="rsvp-section">
+                    <p style="margin-bottom: 1rem; color: #666;">
+                        <strong>Can't wait to see you there!</strong><br>
+                        Please let us know if you can join us ✨
+                    </p>
+                    <button class="rsvp-button" onclick="alert('Thank you for your RSVP! We can\'t wait to celebrate with you! 🌙✨')">
+                        RSVP Now! 🎉
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo" class="logo">
+    
+    <!-- Initialize Parallax -->
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            var scene = document.getElementById('scene');
+            var parallaxInstance = new Parallax(scene, {
+                relativeInput: true,
+                clipRelativeInput: false,
+                hoverOnly: false,
+                calibrateX: false,
+                calibrateY: true,
+                invertX: false,
+                invertY: true,
+                limitX: 40,
+                limitY: 40,
+                scalarX: 6.0,
+                scalarY: 6.0,
+                frictionX: 0.15,
+                frictionY: 0.15,
+                originX: 0.5,
+                originY: 0.5,
+                pointerEvents: false  // Disable pointer events on parallax layers
+            });
+            
+            // Add some sparkle effects
+            setTimeout(() => {
+                console.log('🌙 Moon Festival Parallax Initialized! ✨');
+            }, 100);
+        });
+        
+        // Add some interactive effects
+        document.addEventListener('mousemove', function(e) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                const speed = (index % 3 + 1) * 0.001;
+                const x = (window.innerWidth - e.clientX * speed) * (index % 2 === 0 ? 1 : -1);
+                const y = (window.innerHeight - e.clientY * speed) * (index % 2 === 0 ? 1 : -1);
+                star.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
