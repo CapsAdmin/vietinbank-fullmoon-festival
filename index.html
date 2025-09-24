@@ -32,6 +32,14 @@
             height: 100vh;
             overflow: hidden;
         }
+        .scene2 {
+            pointer-events: none;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: 100;
+            overflow: hidden;
+        }
 
         .layer {
             position: absolute;
@@ -43,11 +51,10 @@
 
         /* Background layer */
         .background-layer {
-            background-image: url('background.png');
+            background-origin: black;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: brightness(0.7);
         }
 
         /* Animal layers */
@@ -70,7 +77,7 @@
             position: absolute;
             right: 15%;
             top: 70%;
-            width: 100px;
+            width: 400px;
             height: auto;
         }
 
@@ -113,48 +120,36 @@
             font-family: 'Cherry Bomb One', cursive;
             font-size: 4rem;
             color: #ffd700;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
             margin-bottom: 1rem;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 10px #ffd700;
-            }
-            to {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 20px #ffd700, 0 0 30px #ffd700;
-            }
         }
 
         .subtitle {
             font-family: 'Cherry Bomb One', cursive;
             font-size: 2.5rem;
             color: #ff6b6b;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 17px rgba(0, 0, 0, 0.6);
             margin-bottom: 2rem;
         }
 
         .invitation-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgb(11, 9, 9);
             border-radius: 20px;
             padding: 2rem;
             margin: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             max-width: 600px;
-            border: 3px solid #ffd700;
         }
 
         .invitation-text {
             font-size: 1.2rem;
-            color: #333;
+            color: white;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
         .event-details {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #ea8766 0%, #a2784b 100%);
+            color: black;
             padding: 1.5rem;
             border-radius: 15px;
             margin: 1.5rem 0;
@@ -164,6 +159,7 @@
             font-family: 'Cherry Bomb One', cursive;
             font-size: 2rem;
             color: #ffd700;
+                        text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
             text-align: center;
             margin-bottom: 1rem;
             /* THIS IS THE DATE - EASY TO CHANGE */
@@ -264,13 +260,11 @@
 
         .moon {
             position: absolute;
-            top: 10%;
-            right: 15%;
-            width: 100px;
-            height: 100px;
-            background: #ffd700;
+            top: 15%;
+            left: 75%;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            box-shadow: 0 0 30px #ffd700;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -279,24 +273,58 @@
             50% { transform: translateY(-10px); }
         }
 
-        .stars {
+        /* Star images */
+        .star-images {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
+            z-index: 8;
         }
 
-        .star {
+        .star-image {
             position: absolute;
-            background: white;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+            
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .star-image.large {
+            width: 35px;
+            height: 35px;
+        }
+
+        .star-image.medium {
+            width: 28px;
+            height: 28px;
+        }
+
+        .star-image.small {
+            width: 15px;
+            height: 15px;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { 
+                opacity: 0.6;
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1) rotate(180deg);
+            }
+        }
+
+        /* Remove old CSS stars styles */
+        .stars {
+            display: none;
+        }
+        
+        .star {
+            display: none;
         }
 
         /* Responsive design */
@@ -327,46 +355,25 @@
     <!-- Parallax Scene (Background Only) -->
     <div id="scene" class="scene">
         
+         <div class="layer" data-depth="0.001" style="z-index: 1000">
+            <img class="moon" src="moon.png">
+        </div>
+
         <!-- Background Layer -->
         <div class="layer background-layer" data-depth="0.2"></div>
         
-        <!-- Animal Layers -->
-        <div class="layer animal-layer" data-depth="0.5">
-            <img src="animal1.png" alt="Cute Animal 1" class="animal1">
-        </div>
         
-        <div class="layer animal-layer" data-depth="0.7">
-            <img src="animal2.png" alt="Cute Animal 2" class="animal2">
-        </div>
         
-        <div class="layer animal-layer" data-depth="0.8">
-            <img src="animal3.png" alt="Cute Animal 3" class="animal3">
-        </div>
-        
-        <!-- Decorations Layer -->
-        <div class="layer decorations" data-depth="0.6">
-            <div class="moon"></div>
-            <div class="stars">
-                <div class="star" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
-                <div class="star" style="top: 25%; left: 80%; animation-delay: 0.5s;"></div>
-                <div class="star" style="top: 40%; left: 15%; animation-delay: 1s;"></div>
-                <div class="star" style="top: 30%; left: 60%; animation-delay: 1.5s;"></div>
-                <div class="star" style="top: 20%; left: 45%; animation-delay: 0.8s;"></div>
-                <div class="star" style="top: 50%; left: 75%; animation-delay: 0.3s;"></div>
-                <div class="star" style="top: 60%; left: 25%; animation-delay: 1.2s;"></div>
-            </div>
-        </div>
     </div>
     
     <!-- Static Content (Outside Parallax) -->
     <div class="static-content">
         <div class="content-layer">
-            <h1 class="main-title">🌙 Moon Festival 🌙</h1>
-            <h2 class="subtitle">Magic Night Party!</h2>
+            <h1 class="main-title">Moon Festival</h1>
             
             <div class="invitation-card">
                 <p class="invitation-text">
-                    🌟 You're invited to the most magical night of the year! 🌟<br>
+                    You're invited to the most magical night of the year!<br>
                     Join us for an enchanted Moon Festival celebration where we'll dance under the stars, 
                     enjoy delicious treats, and create memories that will last forever!
                 </p>
@@ -394,17 +401,31 @@
                         </div>
                     </div>
                 </div>
+
+
+                <img src="sticker.png">
+
             </div>
         </div>
     </div>
+
+    <div id="scene2" class="scene2">
+
+        <!-- Background Layer -->
+        <div class="layer background-layer" data-depth="0.2"></div>
+        
+    </div>
     
-    <!-- Logo -->
+    <!-- Logo
     <img src="logo.png" alt="Logo" class="logo">
-    
+     -->
     <!-- Initialize Parallax -->
     <script>
         // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
+            // Create random star images
+            createRandomStars();
+            
             var scene = document.getElementById('scene');
             var parallaxInstance = new Parallax(scene, {
                 relativeInput: true,
@@ -424,21 +445,90 @@
                 originY: 0.5,
                 pointerEvents: false  // Disable pointer events on parallax layers
             });
+
+            var scene2 = document.getElementById('scene2');
+            var parallaxInstance2 = new Parallax(scene2, {
+                relativeInput: true,
+                clipRelativeInput: false,
+                hoverOnly: false,
+                calibrateX: false,
+                calibrateY: true,
+                invertX: false,
+                invertY: true,
+                limitX: 40,
+                limitY: 40,
+                scalarX: 6.0,
+                scalarY: 6.0,
+                frictionX: 0.15,
+                frictionY: 0.15,
+                originX: 0.5,
+                originY: 0.5,
+                pointerEvents: false  // Disable pointer events on parallax layers
+            });
             
-            // Add some sparkle effects
-            setTimeout(() => {
-                console.log('🌙 Moon Festival Parallax Initialized! ✨');
-            }, 100);
         });
         
-        // Add some interactive effects
+        // Function to create random star images
+        function createRandomStars() {
+            const starContainer = document.getElementById('scene');
+            const numberOfStars = 30; // Create 20 stars
+            const starSizes = ['small', 'medium', 'large'];
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const starImg = document.createElement('img');
+                
+                const starNumber = Math.floor(Math.random() * 7) + 1;
+                starImg.src = `stars/${starNumber}.png`;
+                starImg.alt = `Star ${starNumber}`;
+                
+                // Add CSS classes
+                starImg.className = 'star-image';
+                
+                // Random size
+                const size = Math.random()
+                const randomSize = Math.floor(size * 30 + 20)
+                starImg.style.width = `${randomSize}px`;
+                starImg.style.height = 'auto';
+                
+                // Random position in top half of screen
+                const randomLeft = Math.random() * 100 + 5; // 5% to 95% to avoid edges
+                const randomTop = Math.random() * 100 + 5;  // 5% to 50% (top half only)
+                
+                starImg.style.left = `${randomLeft}%`;
+                starImg.style.top = `${randomTop}%`;
+                
+                // Random animation delay
+                const randomDelay = Math.random() * 3;
+                starImg.style.animationDelay = `${randomDelay}s`;
+                
+                // Random initial rotation
+                const randomRotation = Math.random() * 360;
+                starImg.style.transform = `rotate(${randomRotation}deg)`;
+
+                // wrap in div
+                const starWrapper = document.createElement('div');
+                starWrapper.className = 'layer';
+                starWrapper.dataset.depth = (size * 0.1).toString(); // Depth between 0.7 and 1.2
+                starWrapper.appendChild(starImg);
+
+
+                starContainer.appendChild(starWrapper);
+            }
+            
+            console.log(`✨ Created ${numberOfStars} random star images!`);
+        }
+        
+        // Add some interactive effects for star images
         document.addEventListener('mousemove', function(e) {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((star, index) => {
-                const speed = (index % 3 + 1) * 0.001;
+            const starImages = document.querySelectorAll('.star-image');
+            starImages.forEach((star, index) => {
+                // Subtle additional movement on mouse move
+                const speed = (index % 3 + 1) * 0.0005;
                 const x = (window.innerWidth - e.clientX * speed) * (index % 2 === 0 ? 1 : -1);
                 const y = (window.innerHeight - e.clientY * speed) * (index % 2 === 0 ? 1 : -1);
-                star.style.transform = `translate(${x}px, ${y}px)`;
+                
+                // Apply subtle additional transform without interfering with parallax
+                //star.style.filter = `brightness(${1 + Math.sin(Date.now() * 0.001 + index) * 0.2})`;
             });
         });
     </script>

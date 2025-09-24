@@ -5,10 +5,11 @@ A beautiful, interactive invitation website for kids' Moon Festival celebrations
 ## 🚀 Features
 
 - **Parallax Background Effects**: Interactive mouse-responsive parallax using the Parallax.js library
+- **Random Star Images**: 20 randomly positioned star images with strong parallax effects
 - **Static Content Overlay**: Main invitation text stays readable while background elements move with parallax
 - **Custom Font**: Cherry Bomb One font for playful headers
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Animated Elements**: Floating moon, twinkling stars, and glowing text effects
+- **Animated Elements**: Floating moon, twinkling star images, and glowing text effects
 - **Kid-Friendly Content**: Colorful design with fun activities and easy-to-read information
 
 ## 📝 Easy Date Customization
@@ -36,6 +37,7 @@ Make sure to add these image files to the same directory as `index.html`:
 - `animal2.png` - Second animal character (positioned right side)  
 - `animal3.png` - Third animal character (positioned center-bottom)
 - `logo.png` - Your logo (displayed in bottom-right corner)
+- `stars/` directory with `1.png` through `6.png` - Various star images for animated parallax effects
 
 ## 🎨 Customization Tips
 

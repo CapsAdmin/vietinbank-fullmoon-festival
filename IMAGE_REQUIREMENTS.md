@@ -1,6 +1,6 @@
 # 🖼️ Image Requirements
 
-You need to add 5 image files to make the website work perfectly:
+You need to add 5 main image files plus star images to make the website work perfectly:
 
 ## Required Images
 
@@ -44,6 +44,15 @@ You need to add 5 image files to make the website work perfectly:
 - **Format**: PNG with transparent background
 - **Position**: Fixed at bottom-right corner
 - **Style**: Simple, clear logo that represents your event
+
+### 6. `stars/` Directory (NEW!)
+- **Purpose**: Animated star images with strong parallax effect
+- **Required Files**: `1.png`, `2.png`, `3.png`, `4.png`, `5.png`, `6.png`
+- **Recommended Size**: 50x50px to 100x100px each
+- **Format**: PNG with transparent background
+- **Style**: Different star designs (twinkling, shooting, various shapes)
+- **Animation**: Strong parallax movement in top half of screen
+- **Quantity**: 20 randomly placed stars using random images from this set
 
 ## Image Sources & Ideas
 
