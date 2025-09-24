@@ -43,7 +43,7 @@
 
         /* Background layer */
         .background-layer {
-            background-image: url('background.jpg');
+            background-image: url('background.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -88,12 +88,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            min-height: 100%;
             z-index: 10;
             pointer-events: none; /* Allow mouse events to pass through to parallax */
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            padding-top: 2rem;
         }
 
         /* Content layer */
@@ -101,9 +102,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             padding: 20px;
+            padding-bottom: 3rem;
             pointer-events: auto; /* Re-enable mouse events for interactive elements */
         }
 
@@ -391,28 +393,6 @@
                             Blanket & Pillow
                         </div>
                     </div>
-                </div>
-                
-                <div class="activities">
-                    <h3>🎪 Fun Activities 🎪</h3>
-                    <ul class="activity-list">
-                        <li>🥮 Moon Cake Making</li>
-                        <li>🏮 Lantern Decorating</li>
-                        <li>🎵 Sing Along Songs</li>
-                        <li>📚 Story Time</li>
-                        <li>🎨 Face Painting</li>
-                        <li>⭐ Star Gazing</li>
-                    </ul>
-                </div>
-                
-                <div class="rsvp-section">
-                    <p style="margin-bottom: 1rem; color: #666;">
-                        <strong>Can't wait to see you there!</strong><br>
-                        Please let us know if you can join us ✨
-                    </p>
-                    <button class="rsvp-button" onclick="alert('Thank you for your RSVP! We can\'t wait to celebrate with you! 🌙✨')">
-                        RSVP Now! 🎉
-                    </button>
                 </div>
             </div>
         </div>
