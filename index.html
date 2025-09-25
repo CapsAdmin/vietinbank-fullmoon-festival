@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌙 Vui Tết Trung Thu - Đêm Hội Trăng Rằm 🎉</title>
+    <title>🌙 Vui Tết Trung Thu 🎉</title>
 
     <!-- Cherry Bomb One Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
             --primary-coral: var(--C3);
             --primary-white: white;
             --primary-black: black;
-            --card-bg: rgb(33, 32, 32);
+            --card-bg: rgba(33, 32, 32, 0.597);
             --card-text: rgb(30, 30, 30);
             --gradient-orange-start: var(--C1);
             --gradient-orange-end: var(--C3);
@@ -76,15 +76,6 @@
             overflow: hidden;
         }
 
-        .scene2 {
-            pointer-events: none;
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            z-index: 100;
-            overflow: hidden;
-        }
-
         .layer {
             position: absolute;
             top: 0;
@@ -94,6 +85,7 @@
         }
 
         .background-layer {
+            background-image: url('background.png');
             background-origin: var(--primary-black);
             background-size: cover;
             background-position: center;
@@ -142,6 +134,7 @@
         }
 
         .invitation-card {
+            backdrop-filter: blur(10px);
             background: var(--card-bg);
             border-radius: 20px;
             padding: 2rem;
@@ -157,6 +150,7 @@
         }
 
         .event-details {
+            backdrop-filter: blur(10px);
             background: var(--gradient-orange);
             color: var(--card-text);
             padding: 1.5rem;
@@ -200,7 +194,7 @@
             text-shadow: 0px 0px 6px #000000b0;
             margin-bottom: 1rem;
             text-align: center;
-                        font-size: 1.5rem;
+            font-size: 1.5rem;
         }
 
         .activity-list {
@@ -218,6 +212,12 @@
             font-weight: 700;
         }
 
+        .title {
+            width: calc(min(100%, 400px));
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
         .logo {
             position: fixed;
             bottom: 20px;
@@ -233,14 +233,45 @@
             opacity: 1;
         }
 
+        .object {
+            position: absolute;
+        }
+
         .moon {
             position: absolute;
-            top: 15%;
-            left: 75%;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+            top: 17%;
+            right: 10%;
+            width: 400px;
             animation: float 3s ease-in-out infinite;
+        }
+
+        .mountain {
+            position: absolute;
+            top: 35%;
+            right: 0%;
+            width: 900px;
+        }
+
+        .mountain_foreground {
+            position: absolute;
+            bottom: 20%;
+            right: 30%;
+            width: calc(min(100%, 800px));
+            filter: brightness(1.5)
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 15%;
+            right: 15%;
+            width: 1000px;
+        }
+
+        .boy_girl {
+            position: absolute;
+            bottom: 18%;
+            left: 30%;
+            width: 300px;
         }
 
         @keyframes float {
@@ -359,55 +390,63 @@
     <!-- Parallax Scene (Background Only) -->
     <div id="scene" class="scene">
 
-        <div class="layer" data-depth="0.001" style="z-index: 1000">
-            <img class="moon" src="moon.png">
+        <!-- Background Layer -->
+        <div class="layer background-layer" data-depth="0"></div>
+
+        <div class="layer" data-depth="0.02">
+            <img class="mountain" src="mountain.png">
         </div>
 
-        <!-- Background Layer -->
-        <div class="layer background-layer" data-depth="0.2"></div>
+        <div class="layer" data-depth="0.1">
+            <img class="mountain_foreground" src="mountain_foreground.png">
+        </div>
 
+        <div class="layer" data-depth="0.2">
+            <img class="ground" src="ground.png">
+        </div>
+        <div class="layer" data-depth="0.25">
+            <img class="boy_girl" src="boy_girl.png">
+        </div>
 
-
+        <div class="layer" data-depth="0.001">
+            <img class="moon" src="moon.png">
+        </div>
     </div>
 
     <!-- Static Content (Outside Parallax) -->
-    <div class="static-content">
+    <div class="static-content" style="opacity: 1;">
         <div class="content-layer">
-            <h1 class="main-title">Vui Tết Trung Thu</h1>
-            <h2 class="subtitle">Đêm Hội Trăng Rằm</h2>
+            <img src="title.png" alt="Logo" class="title">
 
             <div class="invitation-card">
                 <p class="invitation-text">
-                    <strong>Kính gửi Quý đồng nghiệp và các bé yêu!</strong><br><br>
-                    Hòa chung không khí rộn ràng của Tết Trung Thu - Tết Thiếu Nhi,
-                    [Tên Công ty] trân trọng kính mời Quý đồng nghiệp cùng các con, các cháu
-                    tham dự chương trình <strong>"Đêm hội trăng rằm"</strong> đầy ý nghĩa.<br><br>
-
-                    Đây là dịp để các bé được vui chơi, tìm hiểu và khám phá những nét đẹp
-                    trong văn hóa truyền thống Việt Nam, cùng nhau tạo nên những kỷ niệm
-                    tuổi thơ đáng nhớ!
+                    <strong>Quý Đồng Nghiệp và các bé yêu,</strong><br><br>
+                    Hòa chung không khí rộn ràng của Tết Trung Thu – Tết Thiếu Nhi, Vietinbank KCN Tiên Sơn xin trân
+                    trọng kính mời Quý đồng nghiệp và các con tham dự chương trình <strong>“VUI TẾT TRUNG THU”</strong>
+                    đầy ý nghĩa.<br><br>
                 </p>
 
                 <div class="event-details">
                     <div class="event-date">
-                        Thứ Sáu, ngày 26 tháng 9 năm 2025
+                        Thứ Sáu, ngày 03 tháng 10 năm 2025
                     </div>
                     <div class="event-info">
                         <div>
                             <strong>🕐 Thời gian</strong><br>
-                            16:00 - 19:00
+                            Từ 19:00 – 21:00
                         </div>
                         <div>
                             <strong>📍 Địa điểm</strong><br>
-                            [Sẽ thông báo sau]
+                            <a href="https://maps.app.goo.gl/Nr2HSdtcUhVw6gpw8" target="_blank">Vietinbank KCN Tiên
+                                Sơn</a>
                         </div>
                         <div>
                             <strong>🎭 Trang phục</strong><br>
-                            Thoải mái, màu sắc rực rỡ
+                            Tự chọn cùng chiếc túi thật to để nhận nhiều phần quà từ Chú Cuội và Chị Hằng
                         </div>
                         <div>
                             <strong>🎒 Mang theo</strong><br>
-                            Niềm vui và tinh thần
+                            Niềm vui hân hoan
                         </div>
                     </div>
                 </div>
@@ -417,12 +456,9 @@
                     <ul class="activity-list">
                         <li>🌙 Gặp gỡ Chị Hằng và Chú Cuội</li>
                         <li>🦁 Múa lân rộn ràng</li>
-                        <li>🏮 Rước đèn lung linh</li>
-                        <li>🍰 Phá cỗ trung thu</li>
-                        <li>🥮 Làm bánh trung thu cùng các bé</li>
-                        <li>🎨 Tô màu đèn lồng truyền thống</li>
                         <li>🎲 Trò chơi dân gian vui nhộn</li>
-                        <li>🎁 Quà tặng đặc biệt cho mỗi em</li>
+                        <li>🎲 Màn ảo thuật huyền bí</li>
+                        <li>🍰 Phá cỗ linh đình</li>
                     </ul>
                 </div>
 
@@ -440,13 +476,6 @@
 
             </div>
         </div>
-    </div>
-
-    <div id="scene2" class="scene2">
-
-        <!-- Background Layer -->
-        <div class="layer background-layer" data-depth="0.2"></div>
-
     </div>
 
     <!-- Logo
@@ -479,40 +508,21 @@
                 pointerEvents: false  // Disable pointer events on parallax layers
             });
 
-            var scene2 = document.getElementById('scene2');
-            var parallaxInstance2 = new Parallax(scene2, {
-                relativeInput: true,
-                clipRelativeInput: false,
-                hoverOnly: false,
-                calibrateX: false,
-                calibrateY: true,
-                invertX: false,
-                invertY: true,
-                limitX: 40,
-                limitY: 40,
-                scalarX: 6.0,
-                scalarY: 6.0,
-                frictionX: 0.15,
-                frictionY: 0.15,
-                originX: 0.5,
-                originY: 0.5,
-                pointerEvents: false  // Disable pointer events on parallax layers
-            });
-
         });
+
+        const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
         // Function to create random star images
         function createRandomStars() {
             const starContainer = document.getElementById('scene');
-            const numberOfStars = 30; // Create 20 stars
+            const numberOfStars = 10; // Create 20 stars
             const starSizes = ['small', 'medium', 'large'];
 
             for (let i = 0; i < numberOfStars; i++) {
                 const starImg = document.createElement('img');
 
-                const starNumber = Math.floor(Math.random() * 7) + 1;
-                starImg.src = `stars/${starNumber}.png`;
-                starImg.alt = `Star ${starNumber}`;
+                const starNumber = Math.floor(Math.random() * 2) + 1;
+                starImg.src = `lanterns/${starNumber}.png`;
 
                 // Add CSS classes
                 starImg.className = 'star-image';
@@ -524,8 +534,8 @@
                 starImg.style.height = 'auto';
 
                 // Random position in top half of screen
-                const randomLeft = Math.random() * 100 + 5; // 5% to 95% to avoid edges
-                const randomTop = Math.random() * 100 + 15;  // 5% to 50% (top half only)
+                const randomLeft = lerp(10, 90, Math.random());
+                const randomTop = lerp(0, 50, Math.random());
 
                 starImg.style.left = `${randomLeft}%`;
                 starImg.style.top = `${randomTop}%`;
@@ -535,13 +545,13 @@
                 starImg.style.animationDelay = `${randomDelay}s`;
 
                 // Random initial rotation
-                const randomRotation = Math.random() * 360;
+                const randomRotation = Math.random() * 20 - 10;
                 starImg.style.transform = `rotate(${randomRotation}deg)`;
 
                 // wrap in div
                 const starWrapper = document.createElement('div');
                 starWrapper.className = 'layer';
-                starWrapper.dataset.depth = (size * 0.1).toString(); // Depth between 0.7 and 1.2
+                starWrapper.dataset.depth = (size * 0.8 + 0.2).toString(); // Depth between 0.7 and 1.2
                 starWrapper.appendChild(starImg);
 
 
