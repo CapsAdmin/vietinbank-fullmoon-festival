@@ -35,6 +35,7 @@
 
     <style>
         :root {
+            --LINK: #2f2170;
             --C1: #B95E82;
             --C2: #ef6c6c;
             --C3: #ee8b4e;
@@ -85,7 +86,8 @@
         body {
             font-family: Arial, sans-serif;
             overflow-x: hidden;
-            background: var(--primary-bg);
+            background-image: url('background.png');
+            background-size: 500%;
         }
 
         .scene {
@@ -162,10 +164,10 @@
         }
 
         .invitation-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-white);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            margin-bottom: -5px;
         }
 
         .event-details {
@@ -174,12 +176,12 @@
             color: var(--card-text);
             padding: 1.5rem;
             border-radius: 15px;
-            margin: 1.5rem 0;
+            margin: 0.8rem 0;
         }
 
         .event-date {
             font-family: "Coiny", cursive;
-            font-size: 2rem;
+            font-size: 1.25rem !important;
             color: var(--primary-gold);
             text-shadow: 3px 3px 6px var(--black-shadow);
             text-align: center;
@@ -189,7 +191,7 @@
         .event-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 0.8rem;
             text-align: center;
         }
 
@@ -204,7 +206,7 @@
             color: var(--accent-gray);
             padding: 1.5rem;
             border-radius: 15px;
-            margin: 1.5rem 0;
+            margin: 1.75rem 0;
         }
 
         .activities h3 {
@@ -213,7 +215,7 @@
             text-shadow: 0px 0px 6px #000000b0;
             margin-bottom: 1rem;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         .activity-list {
@@ -232,9 +234,9 @@
         }
 
         .title {
-            width: calc(min(100%, 400px));
+            width: calc(min(75vw, 400px));
             height: auto;
-            margin-bottom: 1rem;
+            margin-top: -30px;
         }
 
         .logo {
@@ -259,8 +261,8 @@
         .moon {
             position: absolute;
             top: 17%;
-            right: 10%;
-            width: 400px;
+            right: 5%;
+            width: 350px;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -273,7 +275,7 @@
 
         .mountain_foreground {
             position: absolute;
-            bottom: 20%;
+            bottom: 5%;
             right: 30%;
             width: calc(min(100%, 800px));
             filter: brightness(1.5)
@@ -281,19 +283,32 @@
 
         .ground {
             position: absolute;
-            bottom: 15%;
+            bottom: 5%;
             right: 15%;
-            width: 1000px;
+            width: calc(min(100%, 1000px));
         }
 
         .boy_girl {
             position: absolute;
-            bottom: 18%;
-            left: 30%;
+            bottom: 8%;
+            left: 0%;
             width: 300px;
         }
 
         @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+
+        @keyframes lantern_float {
 
             0%,
             100% {
@@ -410,26 +425,26 @@
     <div id="scene" class="scene">
 
         <!-- Background Layer -->
-        <div class="layer background-layer" data-depth="0"></div>
-
-        <div class="layer" data-depth="0.02">
-            <img class="mountain" src="mountain.png">
-        </div>
-
-        <div class="layer" data-depth="0.1">
-            <img class="mountain_foreground" src="mountain_foreground.png">
-        </div>
+        <div class="layer background-layer" data-depth="0.1"></div>
 
         <div class="layer" data-depth="0.2">
-            <img class="ground" src="ground.png">
+            <img class="mountain" src="mountain.png">
         </div>
-        <div class="layer" data-depth="0.25">
-            <img class="boy_girl" src="boy_girl.png">
-        </div>
-
         <div class="layer" data-depth="0.001">
             <img class="moon" src="moon.png">
         </div>
+        <div class="layer" data-depth="0.3">
+            <img class="mountain_foreground" src="mountain_foreground.png">
+        </div>
+
+
+        <div class="layer" data-depth="0.4">
+            <img class="ground" src="ground.png">
+        </div>
+        <div class="layer" data-depth="0.5">
+            <img class="boy_girl" src="boy_girl.png">
+        </div>
+
     </div>
 
     <!-- Static Content (Outside Parallax) -->
@@ -456,7 +471,8 @@
                         </div>
                         <div>
                             <strong>📍 Địa điểm</strong><br>
-                            <a href="https://maps.app.goo.gl/Nr2HSdtcUhVw6gpw8" target="_blank">VietinBank KCN Tiên Sơn</a>
+                            <a style="color: var(--LINK);" href="https://maps.app.goo.gl/Nr2HSdtcUhVw6gpw8" target="_blank">VietinBank KCN Tiên
+                                Sơn</a>
                         </div>
                         <div>
                             <strong>🎭 Trang phục</strong><br>
@@ -533,8 +549,9 @@
         // Function to create random star images
         function createRandomStars() {
             const starContainer = document.getElementById('scene');
-            const numberOfStars = 10; // Create 20 stars
+            const numberOfStars = 40; // Create 20 stars
             const starSizes = ['small', 'medium', 'large'];
+            let stars = []
 
             for (let i = 0; i < numberOfStars; i++) {
                 const starImg = document.createElement('img');
@@ -546,14 +563,14 @@
                 starImg.className = 'star-image';
 
                 // Random size
-                const size = Math.random()
-                const randomSize = Math.floor(size * 30 + 20)
+                const size = Math.pow(Math.random(), 3)
+                const randomSize = Math.floor(size * 40 + 10)
                 starImg.style.width = `${randomSize}px`;
                 starImg.style.height = 'auto';
 
                 // Random position in top half of screen
-                const randomLeft = lerp(10, 90, Math.random());
-                const randomTop = lerp(0, 50, Math.random());
+                const randomLeft = lerp(0, 100, Math.random());
+                const randomTop = lerp(0, 80, Math.random());
 
                 starImg.style.left = `${randomLeft}%`;
                 starImg.style.top = `${randomTop}%`;
@@ -568,13 +585,18 @@
 
                 // wrap in div
                 const starWrapper = document.createElement('div');
+                starWrapper.size = size
                 starWrapper.className = 'layer';
-                starWrapper.dataset.depth = (size * 0.8 + 0.2).toString(); // Depth between 0.7 and 1.2
+                starWrapper.dataset.depth = (size+0.15).toString(); // Depth between 0.7 and 1.2
                 starWrapper.appendChild(starImg);
 
+                stars.push(starWrapper);
 
-                starContainer.appendChild(starWrapper);
             }
+
+            stars.sort((a, b) => a.size - b.size); // Sort by size (depth)
+
+            stars.forEach(star => starContainer.appendChild(star));
 
             console.log(`✨ Created ${numberOfStars} random star images!`);
         }
